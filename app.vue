@@ -1,5 +1,9 @@
+<script setup lang="ts">
+const { isDarkMode } = useDarkMode();
+</script>
+
 <template>
-  <div>
+  <div :style="isDarkMode ? { backgroundColor: 'black' } : null">
     <Nav />
     <Heading />
     <Cards />

@@ -1,9 +1,13 @@
+<script setup lang="ts">
+const { isDarkMode, toggleDarkMode } = useDarkMode();
+</script>
+
 <template>
-  <nav>
+  <nav :class="isDarkMode ? 'dark-mode' : null">
     <div>
-      <h1>Article</h1>
+      <h1 class="title">Article</h1>
       <label class="switch">
-        <input type="checkbox" />
+        <input type="checkbox" :checked="isDarkMode" @change="toggleDarkMode" />
         <span class="slider round"></span>
       </label>
     </div>
@@ -22,7 +26,7 @@ nav div {
   display: flex;
   justify-content: space-between;
 }
-h1 {
+.title {
   font-size: 30px;
 }
 /* The switch - the box around the slider */
@@ -78,5 +82,10 @@ input:checked + .slider:before {
 }
 .slider.round:before {
   border-radius: 50%;
+}
+
+.dark-mode {
+  background-color: rgb(73,72,72);
+  color: white;
 }
 </style>

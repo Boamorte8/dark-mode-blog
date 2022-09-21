@@ -1,9 +1,13 @@
+<script setup lang="ts">
+const { isDarkMode } = useDarkMode();
+</script>
+
 <template>
-  <div class="container">
+  <div class="container" :class="isDarkMode ? 'dark-mode' : null">
     <div class="content-container">
       <div class="text-container">
         <h4>Based on your reading history</h4>
-        <h2>Designing search for mobile apps</h2>
+        <h2 class="title">Designing search for mobile apps</h2>
         <p class="date">Aug 26th, 2021, 4pm</p>
         <p class="snippet">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, in.
@@ -50,5 +54,11 @@ h2 {
   width: 50%;
   margin: 0 auto;
   padding: 50px 0;
+}
+
+.dark-mode .title,
+.dark-mode .date,
+.dark-mode .snippet {
+  color: white;
 }
 </style>

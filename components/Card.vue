@@ -6,15 +6,16 @@ interface CardProps {
     author: string;
   };
 }
-const props = defineProps<CardProps>();
+const { isDarkMode } = useDarkMode();
+defineProps<CardProps>();
 </script>
 
 <template>
-  <div class="card">
-    <img :src="card.img" alt="" />
+  <div class="card" :class="isDarkMode ? 'dark-mode' : null">
+    <img class="image" :src="card.img" alt="" />
     <div class="content">
-      <h3>{{ card.title }}</h3>
-      <p>{{ card.author }}</p>
+      <h3 class="title">{{ card.title }}</h3>
+      <p class="author">{{ card.author }}</p>
     </div>
   </div>
 </template>
@@ -28,14 +29,21 @@ const props = defineProps<CardProps>();
   border-radius: 5px;
   overflow: hidden;
 }
-img {
+.image {
   width: 100%;
   height: 200px;
 }
 .content {
   padding: 10px;
 }
-p {
+.author {
   margin-top: 10px;
+}
+
+.dark-mode.card {
+  background-color: black;
+  color: white;
+}
+.dark-mode .title {
 }
 </style>
